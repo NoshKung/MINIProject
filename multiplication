@@ -1,0 +1,122 @@
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class multiplication implements ActionListener{
+    private static JLabel label,text1;
+    private static JTextField multiplicationtext;
+    private static JButton button;
+    private static JLabel textc,text2,text3,text4,text5,text6,text7,text8,text9,text10,text11,text12;
+
+public static void main(String[] args) {
+    JPanel panel = new JPanel();
+    JFrame frame = new JFrame();
+
+    frame.setSize(250,300);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(true);
+    frame.add(panel);
+
+    panel.setLayout(null);
+
+    label = new JLabel("multiplication");
+    label.setBounds(22,20,80,25);
+    panel.add(label);
+    
+    multiplicationtext = new JTextField(27);
+    multiplicationtext.setBounds(100,20,20,20);
+    panel.add(multiplicationtext);
+
+    button = new JButton("Table");
+    button.setBounds(20, 50, 80, 25);
+    button.addActionListener(new multiplication());
+    panel.add(button);
+
+    //Font fn=new Font("",Font.BOLD,30);
+
+ //--------------------------------------------------------------------------   
+    text1  = new JLabel("");
+    //text1.setFont(fn);
+    text1.setBounds(20, 80, 300, 25);
+    panel.add(text1);
+
+    textc  = new JLabel("");
+    textc.setBounds(20, 90, 300, 25);
+    panel.add(textc);
+
+    text2  = new JLabel("");
+    text2.setBounds(20, 100, 300, 25);
+    panel.add(text2);
+
+    text3  = new JLabel("");
+    text3.setBounds(20, 110, 300, 25);
+    panel.add(text3);
+
+    text4  = new JLabel("");
+    text4.setBounds(20, 120, 300, 25);
+    panel.add(text4);
+
+    text5  = new JLabel("");
+    text5.setBounds(20, 130, 300, 25);
+    panel.add(text5);
+
+    text6  = new JLabel("");
+    text6.setBounds(20, 140, 300, 25);
+    panel.add(text6);
+
+    text7  = new JLabel("");
+    text7.setBounds(20, 150, 300, 25);
+    panel.add(text7);
+
+    text8  = new JLabel("");
+    text8.setBounds(20, 160, 300, 25);
+    panel.add(text8);
+
+    text9  = new JLabel("");
+    text9.setBounds(20, 170, 300, 25);
+    panel.add(text9);
+
+    text10  = new JLabel("");
+    text10.setBounds(20, 180, 300, 25);
+    panel.add(text10);
+
+    text11  = new JLabel("");
+    text11.setBounds(20, 190, 300, 25);
+    panel.add(text11);
+
+    text12  = new JLabel("");
+    text12.setBounds(20, 200, 300, 25);
+    panel.add(text12);
+
+//----------------------------------------
+
+    frame.setVisible(true);
+}
+
+@Override
+    public void actionPerformed(ActionEvent e) {
+        String multiplication = multiplicationtext.getText();
+        int intt =Integer.parseInt(multiplication);
+        text1.setText("|multiplication");
+        textc.setText("|"+intt+" x "+"1    =  "+intt * 1);
+        text2.setText("|"+intt+" x "+"2    =  "+intt * 2);
+        text3.setText("|"+intt+" x "+"3    =  "+intt * 3);
+        text4.setText("|"+intt+" x "+"4    =  "+intt * 4);
+        text5.setText("|"+intt+" x "+"5    =  "+intt * 5);
+        text6.setText("|"+intt+" x "+"6    =  "+intt * 6);
+        text7.setText("|"+intt+" x "+"7    =  "+intt * 7);
+        text8.setText("|"+intt+" x "+"8    =  "+intt * 8);
+        text9.setText("|"+intt+" x "+"9    =  "+intt * 9);
+        text10.setText("|"+intt+" x "+"10  =  "+intt * 10);
+        text11.setText("|"+intt+" x "+"11  =  "+intt * 11);
+        text12.setText("|"+intt+" x "+"12  =  "+intt * 12);
+        
+    }
+
+}
