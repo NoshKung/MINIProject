@@ -1,0 +1,117 @@
+import java.awt.event.InputEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.text.BreakIterator;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import java.awt.Robot;
+
+public class MINIProjcet implements ActionListener{
+    private static JLabel speed,time,second,click;
+    private static JTextField speedtext,timetext;
+    private static JButton left , right;
+    public static void main(String[] args )  {
+        JPanel panel = new JPanel();
+        JFrame frame = new JFrame();
+
+        frame.setSize(250, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        frame.add(panel);
+
+        panel.setLayout(null);
+
+        click = new JLabel("click ");
+        click.setBounds(60, 10, 80, 25);
+        panel.add(click);
+
+        speed = new JLabel("speed ");
+        speed.setBounds(160, 10, 80, 25);
+        panel.add(speed);
+
+        time = new JLabel("time ");
+        time.setBounds(60, 30, 80, 25);
+        panel.add(time);
+
+        second = new JLabel("second ");
+        second.setBounds(160, 30, 80, 25);
+        panel.add(second);
+
+        speedtext = new JTextField(22);
+        speedtext.setBounds(110, 10, 40, 20);
+        panel.add(speedtext);
+
+        timetext = new JTextField(22);
+        timetext.setBounds(110, 30, 40, 20);
+        panel.add(timetext);
+
+        left = new JButton("left");
+        right = new JButton("right");
+
+        left.setBounds(30, 70, 80, 20);
+        right.setBounds(140, 70, 80, 20);
+
+        panel.add(left);
+        panel.add(right);
+
+        left.addActionListener(new MINIProjcet());
+        right.addActionListener(new MINIProjcet());
+        frame.setVisible(true);
+
+    }
+    @Override
+    public void actionPerformed(ActionEvent e ) {
+        String mousespeed = speedtext.getText();
+        if (e.getSource()==left) {
+            left();
+        }
+        if (e.getSource()==right) {
+            right();
+        }
+    }
+    public static void left() {
+        String mousespeed = speedtext.getText();
+        String time = timetext.getText();
+        int  i = Integer.parseInt(mousespeed);
+        int  a = Integer.parseInt(time);
+        try{
+            for(int j = 1; j <= a; j++){
+                Robot r = new Robot();
+                int button = InputEvent.BUTTON1_DOWN_MASK;
+                System.out.println("click");
+                r.mousePress(button);
+                Thread.sleep(i);
+            }    
+            
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        
+    }
+    public static void right() {
+        String mousespeed = speedtext.getText();
+        String time = timetext.getText();
+        int  i = Integer.parseInt(mousespeed);
+        int  a = Integer.parseInt(time);
+        try {
+            for(int j = 1; j <= a; j++){
+                Robot r = new Robot();
+                int button = InputEvent.BUTTON3_DOWN_MASK;
+                System.out.println("click");
+                r.mousePress(button);
+                Thread.sleep(i);
+                
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+}
