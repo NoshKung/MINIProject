@@ -1,0 +1,64 @@
+#include <SoftwareSerial.h>
+#include <Servo.h>
+Servo Myservo;
+int mo = 2;
+char key = '0';
+int pos;
+
+void setup() {
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB port only
+  }
+  pinMode(mo, OUTPUT);
+  Serial.begin(9600);
+  analogWrite(mo, 0);
+
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    key = Serial.read(); 
+    Serial.print("key : ");
+    Serial.println(key); 
+  }
+  if (Serial.available()) {
+    mySerial.write(key = Serial.read());
+    Serial.println(key); 
+  }
+    if (key == '0') {
+    analogWrite(mo, 0); 
+    Serial.println("0");
+  }
+  if (key == '1') {
+    analogWrite(mo, 150); 
+    Serial.println("1");
+  }
+  if (key == '2') {
+    analogWrite(mo, 200); 
+    Serial.println("2");
+  }
+  if (key == '3') {
+    analogWrite(mo, 255); 
+    Serial.println("3");
+  }
+  if (key == '8') {
+    servo(); 
+    Serial.println("Servo on");
+  }
+    if (key == '9') {
+    Myservo.write(90);
+    Serial.println("Servo off");
+  }
+}
+void servo() {
+  for(pos=0;pos<=180;pos++){
+  Myservo.write(pos);
+  delay(15);
+  }
+  delay(1000);
+  for(pos=180;pos>=0;pos--){
+  Myservo.write(pos);
+  delay(15);
+  }
+  delay(1000);
+}
